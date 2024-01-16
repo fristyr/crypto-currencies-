@@ -1,0 +1,81 @@
+appId: com.dennis.g.moonpay.mobile
+---
+#Open the app
+- launchApp
+#Wait until data loaded, and the app became stale 
+- waitForAnimationToEnd
+#Check if Trending list items are presented on the screen
+- assertVisible:
+    id: 'CurrenciesTrendingList item 0'
+- assertVisible:
+    id: 'CurrenciesTrendingList item 2'
+#Swipe down to see currencies list and check if they are presented on the screen
+- swipe:
+    from:
+      id: 'SortingBar title'
+    direction: 'UP'
+    duration: 500
+- waitForAnimationToEnd
+- assertVisible:
+    id: 'CurrenciesList item 0'
+- assertVisible:
+    id: 'CurrenciesList item 1'
+#Tap on Name sort button and check if elements are presented
+- tapOn:
+    id: 'SortingBar button 0'
+- waitForAnimationToEnd
+- assertVisible:
+    id: 'CurrenciesList item 0'
+- assertVisible:
+    id: 'CurrenciesList item 1'
+
+#Tap on Symbol/code sort button and check if elements are presented
+- tapOn:
+    id: 'SortingBar button 1'
+- waitForAnimationToEnd
+- assertVisible:
+    id: 'CurrenciesList item 0'
+- assertVisible:
+    id: 'CurrenciesList item 1'
+
+#Swipe a bit to see next button
+- swipe:
+   from: 
+     id: "SortingBar button 1"
+   direction: LEFT 
+- waitForAnimationToEnd
+
+#Tap on Show US unsuported sort button and check if elements are presented
+- tapOn:
+    id: 'SortingBar button 2'
+- waitForAnimationToEnd
+- assertVisible:
+    id: 'CurrenciesList item 0'
+- assertVisible:
+    id: 'CurrenciesList item 1'
+
+#Swipe a bit to see next button
+- swipe:
+   from: 
+     id: "SortingBar button 3"
+   direction: LEFT 
+- waitForAnimationToEnd
+
+#Tap on Test currencies sort button and check if elements are presented
+- tapOn:
+    id: 'SortingBar button 3'
+- waitForAnimationToEnd
+- assertVisible:
+    id: 'CurrenciesList item 0'
+- assertVisible:
+    id: 'CurrenciesList item 1'
+
+#Tap on Shuffle sort button and check if elements are presented
+- tapOn:
+    id: 'SortingBar button 4'
+- waitForAnimationToEnd
+- assertVisible:
+    id: 'CurrenciesList item 0'
+- assertVisible:
+    id: 'CurrenciesList item 1'
+- stopApp
